@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vince's Vehicles</title>
+</head>
+
+<!-- Options required: 
+        1.Add a Vehicle to Inventory
+        2.Remove a Vehicle from Inventory
+        3.View all Vehicles in Inventory
+        4.View Rental Log
+        5.Rent a Vehicle
+        6.Exit/Quit-->
+
+<body>
+    <h1>Vince's Vehicles</h1>
+
+    <h2>Vehicle Inventory</h2>
+    
+    <!-- Add a Vehicle to Inventory -->
+        <h3>Add a Vehicle:</h3>
+        <form action="/add_vehicle_to_inventory" method="POST">
+            <select name="vehicle_type" id="vehicle_type">
+                <option value="car" id="car" name="car">Car</option>
+                <option value="boat" id="boat" name="boat">Boat</option>
+                <option value="plane" id="plane" name="plane">Plane</option>
+            </select>
+            <br>
+            <br>
+        <label for="colour">Colour:</label><br>
+        <input type="text" id="colour" name="colour" value=""><br>
+        <label for="weight">Weight:</label><br>
+        <input type="text" id="weight" name="weight" value=""><br>
+        <label for="brand">Brand:</label><br>
+        <input type="text" id="brand" name="brand" value=""><br>
+        <label for="motor_type">Motor Type:</label><br>
+        <input type="text" id="motor_type" name="motor_type" value=""><br>
+        <br>
+        <input type="submit" value="Add">
+      </form>
+    
+
+    <!-- View all Vehicles in Inventory -->
+    <h3>View all vehicles</h3>
+    <form action=>
+      <label for="view_vehicle_inventory">All vehicles in inventory:</label>
+      <select name="view_vehicle_inventory" id="view_vehicle_inventory">
+          {% for vehicle in vehicle_inventory %}
+                <option value="">{{ vehicle }}</option>
+            {% endfor %}
+      </select>
+      <br><br>
+    </form>
+
+
+    <!-- Remove a Vehicle from Inventory 1-->
+    <h3>Remove a Vehicle:</h3>
+    <form action="/remove_vehicle_from_inventory" method="POST">
+      <label for="vehicle_number">Vehicle Number:</label><br>
+      <br>
+      <input type="text" 
+             id="vehicle_number" 
+             name="vehicle_number"
+             value="E.g. VV1"><br>
+      <br>
+      <input type="submit" value="Remove">
+      <br>
+    </form>
+
+
+    <!-- View Rental Log -->
+    <h3>View Rental Log</h3>
+    <form action=>
+      <label for="view_rental_log">All currently rented vehicles:</label>
+      <select name="view_rental_log" id="view_rental_log">
+          {% for vehicle in rental_log %}
+                <option value="">{{ vehicle }}</option>
+            {% endfor %}
+      </select>
+      <br><br>
+    </form>
+    
+
+    <!-- Rent a Vehicle -->
+    <h3>Rent a vehicle</h3>
+    <form action="/rent_vehicle" method="POST">
+      <label for="rent_a_vehicle">Vehicle number to rent:</label><br>
+      <br>
+      <input type="text" 
+             id="rent_a_vehicle" 
+             name="rent_a_vehicle"
+             value="E.g. VV1"><br>
+      <br>
+      <input type="submit" value="Rent">
+      <br>
+    </form>
+
+
+</body>
+</html>
