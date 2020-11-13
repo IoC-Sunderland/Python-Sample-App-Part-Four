@@ -1,8 +1,5 @@
-import sys
-
-from flask import Flask, flash, render_template, request, redirect
+from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 from vehicles import Car, Boat, Plane
@@ -22,23 +19,6 @@ def main():
                                          rental_log=RentalLog
                                             .CURRENT_RENTALS)
                                         
-
-        
-@app.route('/select_vehicle_type', methods=["GET", "POST"])
-def select_vehicle_type():
-
-    print('Hi from /select_vehicle_type')
-
-    if request.method == "POST":
-
-        req = request.form
-
-        print(req)
-
-        return redirect('/')
-    
-    return render_template("index.html")
-
 
 @app.route("/add_vehicle_to_inventory", methods=["GET", "POST"])
 def add_vehicle_to_inventory():
